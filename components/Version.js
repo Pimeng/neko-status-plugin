@@ -3,12 +3,10 @@ import fs from 'fs'
 let packageJson = JSON.parse(fs.readFileSync('package.json', 'utf8'))
 
 const yunzaiVersion = packageJson.version
-const isMiao = packageJson.name === 'miao-yunzai'
-const isTrss = packageJson.name === 'trss-yunzai'
+const yunzaiName = packageJson.name.replace(/(^\w|-\w)/g, s => s.toUpperCase())
 
 let Version = {
-  isMiao,
-  isTrss,
+  yunzaiName,
   get version() {
     return yunzaiVersion
   }
